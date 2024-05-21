@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block title %}{{travel.name}}{% endblock %}
+
+{% block body %}
+
+{% include "components/snd_nav.html.twig" %}
+
+<a href={{ path('app_compte') }} class="bg-[#6E7554] hover:bg-[#BBC98F] text-[#FFFEFD] hover:text-[#312c2e] rounded text-center px-3 py-2 m-5"> Retour </a>
+
+    <div class="px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto text-center">
+
+        <div class="flex flex-row justify-between ">
+            <img class="h-auto rounded" width="500" src="https://tonvoyage.fr/wp-content/uploads/2018/02/preparer-son-voyage.jpg" alt="Image Description">
+            {# <img class="h-auto rounded-t-xl" width="300" src={{article.urlImg}} alt="Image Description"> #}
+
+            <div class="flex flex-col ">
+                <h2 class="text-2xl font-bold md:text-3xl text-[#FF7F3F]">{{ travel.name }}</h2>
+                <p class="text-lg text-[#312c2e] p-2">Du {{travel.dateStart | date('d/m/Y')}} au {{travel.dateEnd | date('d/m/Y')}}</p>
+                <p class="text-lg text-[#312c2e] p-2">Nombre de voyageur(s) : {{travel.nbPassenger}}</p>
+            </div>
+
+            <img class="xl:w-1/3 w-full mr-5 border-2 border-[#FF7F3F]" src="../pictures/map.jpg" alt="Carte avec le trajet du voyage" width="400" height="200"/>
+
+        </div>
+    </div>
+    <div>
+        {# {% include "route_start/index.html.twig" %} #}
+        {% include "host/index.html.twig" %}
+    </div>
+
+    <div class="flex flex-col items-center center bg-[#6E7554] text-[#FFFEFD] rounded p-2 w-1/2 m-8">
+        <p>{{host.name}}</p>
+        <p>{{host.address}}</p>
+        <p>{{host.phone}}</p>
+        <p>{{host.info}}</p>
+        <p>{{host.radio}}</p>
+    </div>
+{% endblock %}

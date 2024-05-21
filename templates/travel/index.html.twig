@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inistialisation d'un voyage{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-3xl text-[#FF7F3F]">Nouveau voyage</h1>
+
+    <div class="flex justify-center mt-20 mb-40">
+        <div class="flex flex-col justify-center items-center center bg-[#6E7554] text-[#FFFEFD] rounded p-5 w-auto">
+            {{form_start(form)}}
+            <div class="flex text-center text-[#fffefd] p-2">
+                {{form_label(form.name)}}
+                {{form_widget(form.name)}}            
+            </div>
+            <div class="flex text-center text-[#fffefd] p-2">
+                {{form_label(form.country)}}
+                {{form_widget(form.country)}}            
+            </div>
+            <div class="flex text-center text-[#fffefd] p-2">
+                {{form_label(form.dateStart)}}
+                {{form_widget(form.dateStart)}}            
+            </div>
+            <div class="flex text-center text-[#fffefd] p-2">
+                {{form_label(form.dateEnd)}}
+                {{form_widget(form.dateEnd)}}            
+            </div>
+            <div class="flex text-center text-[#fffefd] p-2">
+                {{form_label(form.nbPassenger)}}
+                {{form_widget(form.nbPassenger)}}            
+            </div>
+            <div class="flex justify-center m-5 mt-5">
+                <input type="submit" value="Créer le voyage" class="bg-[#fffefd] text-[#312c2e] text-xl rounded-full px-8 py-1 mt-10 hover:bg-[#FF7F3F]"/>
+            </div>
+            
+
+            {{form_end(form)}} 
+            
+            <p>{{msg}}</p>      
+        </div>
+    </div>
+
+
+{% endblock %}
+

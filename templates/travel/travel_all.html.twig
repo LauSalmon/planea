@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+<div class="text-[#312C2E]">
+    <h1 class="lg:text-4xl text-3xl lg:pl-20 pl-5">Hello Laura,</h1>
+
+    <div class="flex  flex-col lg:flex-row">
+        <div class="flex flex-col lg:w-1/2 w-full justify-center items-center">
+            <a href="/nouveau-voyage" class="bg-[#6E7554] text-[#FFFEFD] hover:bg-[#bbc98f] hover:text-[#312c2e] m-5 lg:p-1 p-3 lg:w-96 w-80 rounded-full lg:text-xl text-2xl text-center">Nouveau voyage</a>
+            <a href="/informations" class="bg-[#6E7554] text-[#FFFEFD] hover:bg-[#bbc98f] hover:text-[#312c2e] m-5 lg:p-1 p-3 lg:w-96 w-80 rounded-full lg:text-xl text-2xl text-center">Informations personnelles</a>
+        </div>
+        <img class="xl:w-1/2 w-full mr-5 border-2 border-[#FF7F3F]" src="../pictures/map.jpg" alt="Mapmonde avec les pays visités coloré en orange" width="400" height="200"/>
+    </div>
+
+    <div class="flex flex-col lg:flex-row m-10">
+        <div class="flex flex-col lg:w-96 w-full mx-5">
+            <h2 class="lg:text-2xl text-3xl text-center">Voyages en cours</h2>
+            <div class="flex flex-wrap lg:text-lg text-2xl w-full justify-center">
+
+                {# Boucle pour récupéré tous les voyages de la base de données #}
+                {% for travel in travels %}
+                <div class="lg:w-48 p-5 text-center flex flex-col items-center">
+                    <a href={{ path('app_travel', { id:travel.id } ) }}><img class="lg:size-32 size-48" src="https://www.tourmag.com/photo/art/grande/76939857-55672992.jpg?v=1700834351"/></a>
+                    
+                    <p class="m-2">{{travel.name}}</p>
+                </div>
+                {% endfor %} 
+            </div>
+
+        </div>
+
+        <div class="flex flex-col lg:w-96 w-full mx-5">
+            <h2 class="lg:text-2xl text-3xl text-center">Voyages passés</h2>
+            <div class="flex flex-wrap lg:text-lg text-2xl w-full justify-center">
+                <div class="lg:w-48 p-5 text-center flex flex-col items-center">
+                    <img class="lg:size-32 size-48" src="https://thumbs.dreamstime.com/b/sc%C3%A8ne-de-londres-11861853.jpg"/>
+                    <p class="m-2">Week-end à Londres</p>
+                </div>
+                <div class="lg:w-48 p-5 text-center flex flex-col items-center">
+                    <img class="lg:size-32 size-48" src="https://woody.cloudly.space/app/uploads/lourdes/2021/05/thumbs/cauterets-lac-de-gaube-ot-cauterets-640x640-crop-1621944267.jpg"/>
+                    <p class="m-2">RoadTrip dans les pyrénées</p>
+                </div>                
+            </div>
+
+        </div>
+    </div>    
+</div>
+
+{% endblock %}
+
+
+    {# <h2 class="text-2xl font-bold md:text-3xl dark:text-white p-5">Hello !</h2>
+    {# Bouton #}
+    {# <div class="m-5 text-gray-500 bg-[#6E7554] rounded w-64 text-center align-self-center">
+        <a href={{ path('app_new_travel') }} class="text-[#FFFEFD]">Nouveau Voyage</a>
+    </div> #}
+        
+
+    {# <h3 class="text-xl p-5">Voyages en cours</h3>
+    <div class="container">
+        <div class="flex flex-wrap gap-4"> #}
+        {# Boucle pour récupéré tous les voyages de la base de données #}
+            {# {% for travel in travels %}
+
+                <div class="flex flex-col place-items-center border border-black w-40 h-48 m-5 p-2">
+                    <img class="h-auto rounded" width="130" src="https://tonvoyage.fr/wp-content/uploads/2018/02/preparer-son-voyage.jpg" alt="Image Description">
+
+                    <p>{{travel.name}}</p> #}
+                    {# <p>{{travel.dateStart | date('d/m/Y')}}</p>
+                    <p>{{travel.dateEnd | date('d/m/Y')}}</p>    #}
+                    {# <p class="mt-5 text-xs text-gray-500 dark:text-gray-500">
+                        <a href={{ path('app_travel', { id:travel.id } ) }}>Voir le detail du voyage</a>
+                    </p>
+                </div>
+            {% endfor %}     
+        </div>
+    </div>  #}

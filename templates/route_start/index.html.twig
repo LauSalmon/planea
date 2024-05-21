@@ -1,0 +1,40 @@
+<div class="flex flex-col justify-center items-center center bg-[#6E7554] text-[#FFFEFD] rounded p-5 w-auto">
+    {{form_start(form)}}
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.placeStart)}}
+        {{form_widget(form.placeStart)}}            
+    </div> 
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.placeEnd)}}
+        {{form_widget(form.placeEnd)}}            
+    </div>
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.nbVehicule)}}
+        {{form_widget(form.nbVehicule)}}            
+    </div>    
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.dateStart)}}
+        {{form_widget(form.dateStart)}}            
+    </div>
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.dateEnd)}}
+        {{form_widget(form.dateEnd)}}            
+    </div>
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.TimeStart)}}
+        {{form_widget(form.TimeStart)}}            
+    </div>
+    <div class="flex text-center text-[#fffefd] p-2">
+        {{form_label(form.timeEnd)}}
+        {{form_widget(form.timeEnd)}}            
+    </div>
+
+    <div class="flex justify-center m-5 mt-5">
+        <input type="submit" value="Valider" class="bg-[#ff7F3F] text-[#312c2e] text-xl rounded-full px-8 py-1 mt-10 hover:bg-[#BBc98F]"/>
+    </div>
+    
+
+    {{form_end(form)}} 
+    
+    <p>{{msg}}</p>      
+</div>

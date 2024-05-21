@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Planéa{% endblock %}
+
+{% block body %}
+    <img class="mx-3" src="https://picsum.photos/1895/400" alt="Bandeau d'acceuil"/>
+    <div class="flex lg:flex-row flex-col">
+        <div class="flex flex-col place-items-center text-center border-2 rounded m-3 p-2 border-[#6E7554]">
+            <p class="text-2xl">Bienvenue sur Planéa !</p>
+            <p class="my-2">Venez planifier vos voyages et ainsi partir l'esprit tranquille pour découvrir de nouveaux horizons.</p>
+            <img class="border-2 border-[#BBC98F] rounded mt-5" src="https://picsum.photos/230/140"/>
+        </div>
+
+        <div class="flex flex-row border-2 rounded m-3 p-2 border-[#6E7554]">
+            <div class="flex flex-col place-items-center text-center w-1/2">
+                <img class="border-2 border-[#BBC98F] rounded" src="https://picsum.photos/180/110"/>
+                <p class="my-2">Organiser vos journées comme vous le voulez.</p>
+                <p class="my-2">Ajouter des photos pour illustrer vos journées.</p>
+                <p class="my-2">Voyez votre trajet sur une carte.</p>                
+            </div>
+
+            <div class="flex flex-col place-items-center text-center w-1/2">
+                <p class="my-2">Renseignez simplement les informations lié à votre voyage (trajet(s), activités, hébergements,...)</p>
+                <img class="border-2 border-[#BBC98F] rounded" src="https://picsum.photos/145/150"/>
+                <p class="my-2">Et enfin télécharger votre Roadbook !</p>                
+            </div>
+        </div>
+
+        <div class="flex flex-row border-2 rounded m-3 p-2 border-[#6E7554]">
+            <div class="flex flex-col place-items-center text-center w-1/2">
+                <img class="border-2 border-[#BBC98F] rounded" src="https://picsum.photos/145/140"/>
+                <p class="my-2">Ne perdez plus de temps à rassembler et imprimer tous vos documentset réservations.</p>
+                <p class="my-2">Tous les documents que vous aurez ajouter à votre voyage seront contenu dans le document final.</p>
+            </div>
+            
+            <div class="flex flex-col place-items-center text-center w-1/2">
+                <p class="my-2">Vous pouvez planifer plusieurs voyages en même temps et également conserver ceux qui sont déjà passés.</p>
+                <p class="my-2">N'hésitez plus et commencez à planifiez votre prochain voyage !</p>
+                <img class="border-2 border-[#BBC98F] rounded mt-5" src="https://picsum.photos/180/110"/>
+            </div>
+            
+        </div>
+    </div>
+    <div class="flex lg:flex-row flex-col lg:justify-evenly">
+        {% include "utilisateur/index.html.twig" %}
+        {% include "utilisateur/connection.html.twig" %}        
+    </div>
+
+    {# <div id="root"></div> #}
+{% endblock %}

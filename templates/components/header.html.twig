@@ -1,0 +1,33 @@
+<header class=" sm:justify-start sm:flex-nowrap z-50 w-full text-[#312C2E]">
+
+    <nav class="flex flex-row justify-between m-5 items-center">
+      <div class="flex flex-row items-center">
+          <img src="../pictures/logo.jpg" alt="Logo de Planéa" width="135" height="130"/>
+          <a  class="text-4xl text-[#FF7F3F] font-bold" href="/">Planéa</a>
+      </div>
+
+      <div class="bg-[#bbc98f] rounded w-1/3 flex justify-around text-xl">
+        {% if app.user %}
+          <a  class="p-2" href="/" aria-current="page">Accueil</a>
+          <a  class="p-2" href="/mon-compte">Mon compte</a>
+          <a  class="p-2" href="#">Nouveau Voyage</a>
+          <a  class="p-2" href="#">Contact</a>
+        {% else %}
+          <a  class="p-2 hover:text-[#FF7F3F]" href="/" aria-current="page">Accueil</a>
+          <a  class="p-2 hover:text-[#FF7F3F]" href="#">Contact</a>
+        {% endif %}   
+      </div>
+        
+      <div class="text-xl">
+        {% if app.user %}
+          <a  class="p-2 hover:text-[#FF7F3F]" href="#">Mon compte</a>
+          <a  class="p-2 hover:text-[#FF7F3F]" href="/logout">Déconnexion</a>
+        {% else %}
+          <a  class="p-2 hover:text-[#FF7F3F]" href="/mon-compte">Connexion</a>
+          <a  class="p-2 hover:text-[#FF7F3F]" href="#">Inscription</a>
+        {% endif %}   
+      </div>
+         
+
+    </nav>
+  </header>
