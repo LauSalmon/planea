@@ -42,6 +42,9 @@ class UtilisateurController extends AbstractController
             //  if($utilisateur->getUrlImg()) {
             //      $utilisateur->setUrlImg(UtilsService::cleanInput($utilisateur->getUrlImg()));
             //  }
+
+            $utilisateur->setRoles(["ROLES_USER"]);
+            
              if($us->create($utilisateur)){
                 $msg = "Votre inscription est validé ! Connectez-vous !";
             }else {

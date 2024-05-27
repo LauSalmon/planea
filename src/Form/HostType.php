@@ -20,7 +20,7 @@ class HostType extends AbstractType
             ->add('name', TextType::class,  [
                 'attr' => [
                     'class' => 'input rounded-full p-1 mx-5 text-[#312c2e] w-96',
-                    'placeholder' => "Nom de l'hébergement",
+                    'placeholder' => "Nom de l'hébergement*",
                 ],
                 
                 'label_attr' => ["class" => 'label_input'],
@@ -29,7 +29,7 @@ class HostType extends AbstractType
             ->add('address', TextType::class,  [
                 'attr' => [
                     'class' => 'input rounded-full p-1 mx-5 text-[#312c2e] w-96',
-                    'placeholder' => "Adresse de l'hébergement",
+                    'placeholder' => "Adresse de l'hébergement*",
                 ],
                 
                 'label_attr' => ["class" => 'label_input'],
@@ -73,8 +73,6 @@ class HostType extends AbstractType
             ])
             // ->add('travel', EntityType::class, [
             //     'class' => Travel::class,
-            //     'expanded' => false,
-            //     'multiple' => false,
             // ])
         ;
     }

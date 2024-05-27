@@ -1,8 +1,8 @@
 <h2 class="px-10">Hébergement(s)</h2>
-<div class="flex bg-[#6E7554] text-[#FFFEFD] rounded w-1/2 m-8">
+<div class="flex flex-col bg-[#6E7554] text-[#FFFEFD] rounded w-1/2 m-8">
     {{form_start(form)}}
-    <div class="flex flex-row">
-        <div class="">
+    <div class="flex flex-row place-content-between">
+        <div class="w-96">
             <div class="p-1">
                 {{form_widget(form.name)}}            
             </div>
@@ -17,16 +17,16 @@
             </div>                
         </div>
     
-        <div class="">
+        <div class="w-96">
             <div class="p-2 ">
                 {{form_widget(form.price)}}          
             </div>
             <div class="p-2">
-                {{form_widget(form.radio)}}            
+                {{form_widget(form.radio)}}*            
             </div>  
 
             <div class="flex justify-end">
-                <input type="submit" value="Ajouter" class="bg-[#ff7F3F] text-[#312c2e] text-xl rounded-full px-8 py-1 mt-2 hover:bg-[#BBc98F]"/>
+                <input type="submit" value="Ajouter" class="bg-[#ff7F3F] text-[#312c2e] text-xl rounded-full px-8 py-1 mt-2 mr-2 hover:bg-[#BBc98F]"/>
             </div>           
         </div>        
     </div>

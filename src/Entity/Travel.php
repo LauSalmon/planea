@@ -52,6 +52,9 @@ class Travel
     #[ORM\ManyToOne(inversedBy: 'travel')]
     private ?Utilisateur $utilisateur = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img_travel = null;
+
     public function __construct()
     {
         $this->restaurants = new ArrayCollection();
@@ -315,6 +318,18 @@ class Travel
     public function setUtilisateur(?Utilisateur $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getImgTravel(): ?string
+    {
+        return $this->img_travel;
+    }
+
+    public function setImgTravel(?string $img_travel): static
+    {
+        $this->img_travel = $img_travel;
 
         return $this;
     }

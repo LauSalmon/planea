@@ -62,11 +62,17 @@ class TravelType extends AbstractType
                 'label_attr' => ["class" => 'label_input'],
                 'required' => true
             ])
-            ->add('utilisateur', EntityType::class, [
-                'class' => Utilisateur::class,
-                'expanded' => false,
-                'multiple' => false,
+            ->add('imgTravel', TextType::class, [
+                'attr' => [
+                    'class' => 'input rounded-full p-1 mx-5 text-[#312c2e] w-96'
+                ],
+                'label' => "Saisir une url pour illustrer le voyage :",
+                'label_attr' => ["class" => 'label_input'],
+                'required' => true
             ])
+            // ->add('utilisateur', EntityType::class, [
+            //     'class' => Utilisateur::class,
+            // ])
         ;
     }
 

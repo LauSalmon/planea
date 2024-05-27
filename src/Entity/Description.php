@@ -20,6 +20,9 @@ class Description
     #[ORM\ManyToOne(inversedBy: 'descriptions')]
     private ?Travel $travel = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img_description = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Description
     public function setTravel(?Travel $travel): static
     {
         $this->travel = $travel;
+
+        return $this;
+    }
+
+    public function getImgDescription(): ?string
+    {
+        return $this->img_description;
+    }
+
+    public function setImgDescription(?string $img_description): static
+    {
+        $this->img_description = $img_description;
 
         return $this;
     }

@@ -32,22 +32,31 @@ class HostController extends AbstractController
             $host->setAddress(UtilsService::cleaninput($host->getAddress()));
             $host->setRadio(UtilsService::cleaninput($host->getRadio()));
             
+            //Si un numéro de téléphone à été rentré
+            //If number phone has been entered
             if($host->getPhone()){
                $host->setPhone(UtilsService::cleaninput($host->getPhone())); 
             }
+            //Si un prix à été rentré
+            //If a price has been entered
             if($host->getPrice()){
                $host->setPrice(UtilsService::cleaninput($host->getPrice()));  
             }
+            //Si une information compémentaire a été rentré
+            //If a additional information has been entered
             if($host->getInfo()){
                $host->setInfo(UtilsService::cleaninput($host->getInfo()));   
              }
 
+             //Lier le nouvel hébergement au voyage en cours
+             //Link the new host to the current travel
+            $host->setTravel($travel);
              
             if(!$hostRepository->findOneBy(['name' => $host->getName()])){
                 $manager->persist($host);
                 $manager->flush();
 
-                $msg = "L'hébergement à bien été enregistré";
+                $msg = "L'hébergement à bien été ajouté";
 
             } else {
                 $msg = "Un hébergement avec le même nom est déjà enregistré";
@@ -58,6 +67,19 @@ class HostController extends AbstractController
             'msg' => $msg,
             'travel'=> $travel,
             'host' => $host,
+        ]);
+    }
+
+    #[Route('/voyage/{id}', name: 'app_host_all')]
+    public function hostAll(Travel $travel): Response
+    {
+        $hosts= $this->hostRepository->findAll();
+        //$user= $this->utilisateurRepository->find($id);
+
+        return $this->render('travel/travel_detail.html.twig', [
+            'hosts' => $hosts,
+            'travel'=> $travel,
+            //'user' => $user,
         ]);
     }
 

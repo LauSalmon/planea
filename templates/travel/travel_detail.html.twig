@@ -27,12 +27,5 @@
         {# {% include "route_start/index.html.twig" %} #}
         {% include "host/index.html.twig" %}
     </div>
-
-    <div class="flex flex-col items-center center bg-[#6E7554] text-[#FFFEFD] rounded p-2 w-1/2 m-8">
-        <p>{{host.name}}</p>
-        <p>{{host.address}}</p>
-        <p>{{host.phone}}</p>
-        <p>{{host.info}}</p>
-        <p>{{host.radio}}</p>
-    </div>
+    {% include "host/host_all.html.twig" %}
 {% endblock %}

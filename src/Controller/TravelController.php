@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,7 @@ class TravelController extends AbstractController{
     }
 
     #[Route('/nouveau-voyage', name: 'app_new_travel')]
-    public function newTravel(Request $request, EntityManagerInterface $manager, Travelrepository $travelRepository): Response{
+    public function newTravel(Request $request, EntityManagerInterface $manager, Travelrepository $travelRepository, Utilisateur $utilisateur): Response{
 
         $msg = "";
         $travel = new Travel();
@@ -36,6 +37,10 @@ class TravelController extends AbstractController{
             $travel->setCountry(UtilsService::cleaninput($travel->getCountry()));
             $travel->setDateStart(new \DateTimeImmutable(UtilsService::cleanInput($form->getData()->getDateStart()->format('d-m-Y'))));
             $travel->setDateEnd(new \DateTimeImmutable(UtilsService::cleanInput($form->getData()->getDateEnd()->format('d-m-Y'))));
+
+            //Lier le voyage à l'utilisateur connecté
+            //Link the new travel to the current user
+            $travel->setUtilisateur($utilisateur);
 
             if(!$travelRepository->findOneBy(['name' => $travel->getName()])){
                 $manager->persist($travel);
