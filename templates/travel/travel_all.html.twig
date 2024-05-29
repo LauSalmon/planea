@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="text-[#312C2E]">
-    <h1 class="lg:text-4xl text-3xl lg:pl-20 pl-5">Hello Laura,</h1>
+    <h1 class="lg:text-4xl text-3xl lg:pl-20 pl-5">Bonjour {{app.user.firstName}},</h1>
 
     <div class="flex  flex-col lg:flex-row">
         <div class="flex flex-col lg:w-1/2 w-full justify-center items-center">
@@ -19,7 +19,8 @@
             <h2 class="lg:text-2xl text-3xl text-center">Voyages en cours</h2>
             <div class="flex flex-wrap lg:text-lg text-2xl w-full justify-center">
 
-                {# Boucle pour récupéré tous les voyages de la base de données #}
+                {# Boucle pour récupérer tous les voyages de la base de données #}
+                {# Loop to show all database trips #}
                 {% for travel in travels %}
                 <div class="lg:w-48 p-5 text-center flex flex-col items-center">
                     <a href={{ path('app_travel', { id:travel.id } ) }}><img class="lg:size-32 size-48" src="https://www.tourmag.com/photo/art/grande/76939857-55672992.jpg?v=1700834351"/></a>

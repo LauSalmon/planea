@@ -14,10 +14,10 @@
                 <p class="text-lg text-gray-800S dark:text-gray-200">Nom : {{utilisateur.firstName}}</p>
                 <p class="text-lg text-gray-800S dark:text-gray-200">Nom : {{utilisateur.email}}</p> #}
 
-                <p class="text-lg text-[#312C2E] p-2">Nom : Salmon</p>
-                <p class="text-lg text-[#312C2E] p-2">Prénom : Laura</p>
-                <p class="text-lg text-[#312C2E] p-2">Adresse mail : salmon.laura@laposte.net</p>
-                <p class="text-lg text-[#312C2E] p-2">Mot de passe : **********</p>
+                <p class="text-lg text-[#312C2E] p-2">Nom : {{app.user.lastName}}</p>
+                <p class="text-lg text-[#312C2E] p-2">Prénom : {{app.user.firstName}}</p>
+                <p class="text-lg text-[#312C2E] p-2">Adresse mail : {{app.user.email}}</p>
+                <p class="text-lg text-[#312C2E] p-2">Mot de passe : {{app.user.password}}</p>
             </div>
             <button class="bg-[#6E7554] hover:bg-[#BBC98F] text-[#FFFEFD] hover:text-[#312c2e] m-5 mt-10 lg:p-1 p-3 lg:w-96 w-80 rounded-full lg:text-xl text-2xl text-center">Modifier les informations</button>
             <button class="bg-[#FF7F3F] hover:bg-[#BBC98F] text-[#312C2E] m-5 lg:p-1 p-3 lg:w-96 w-80 rounded-full lg:text-xl text-2xl text-center">Supprimer le compte</button>

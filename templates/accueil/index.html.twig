@@ -43,7 +43,8 @@
     </div>
     <div class="flex lg:flex-row flex-col lg:justify-evenly">
         {% include "utilisateur/index.html.twig" %}
-        {% include "utilisateur/connection.html.twig" %}        
+
+        {{ render(path('app_login')) }}
     </div>
     <p>{{msg}}</p>
     {# <div id="root"></div> #}

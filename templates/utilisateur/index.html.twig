@@ -2,6 +2,7 @@
 <div class="flex flex-col items-center bg-[#6e7554] lg:w-1/4 rounded mb-5 ml-3">
     <h1 class="text-2xl text-[#fffefd]">Créer son compte</h1>
     <div class="flex flex-col ">
+
         {{form_start(form)}}
         <div class="flex flex-col text-center text-[#fffefd] p-2 ">
             {{form_label(form.lastName)}}
@@ -16,8 +17,8 @@
             {{form_widget(form.email)}}            
         </div>
         <div class="flex flex-col text-center text-[#fffefd] p-2">
-            {{form_label(form.pwd)}}
-            {{form_widget(form.pwd)}}            
+            {{form_label(form.password)}}
+            {{form_widget(form.password)}}            
         </div>
         <div class="flex justify-end m-5">
            <input type="submit" value="Valider" class="bg-[#fffefd] text-[#312c2e] text-xl rounded-full px-8 py-1 hover:bg-[#FF7F3F]"/> 
@@ -25,7 +26,7 @@
             
 
         {{form_end(form)}} 
-        
+
         <p class="text-[#FFFEFD]">{{msg}}</p>     
     </div>        
 </div>

@@ -49,11 +49,14 @@ class Travel
     #[ORM\OneToMany(targetEntity: Activity::class, mappedBy: 'travel')]
     private Collection $activities;
 
-    #[ORM\ManyToOne(inversedBy: 'travel')]
-    private ?Utilisateur $utilisateur = null;
+    // #[ORM\ManyToOne(inversedBy: 'travel')]
+    // private ?Utilisateur $utilisateur = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $img_travel = null;
+
+    #[ORM\ManyToOne(inversedBy: 'travel')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -310,17 +313,17 @@ class Travel
         return $this;
     }
 
-    public function getUtilisateur(): ?Utilisateur
-    {
-        return $this->utilisateur;
-    }
+    // public function getUtilisateur(): ?Utilisateur
+    // {
+    //     return $this->utilisateur;
+    // }
 
-    public function setUtilisateur(?Utilisateur $utilisateur): static
-    {
-        $this->utilisateur = $utilisateur;
+    // public function setUtilisateur(?Utilisateur $utilisateur): static
+    // {
+    //     $this->utilisateur = $utilisateur;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getImgTravel(): ?string
     {
@@ -330,6 +333,18 @@ class Travel
     public function setImgTravel(?string $img_travel): static
     {
         $this->img_travel = $img_travel;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

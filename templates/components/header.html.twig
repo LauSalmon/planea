@@ -10,7 +10,7 @@
         {% if app.user %}
           <a  class="p-2" href="/" aria-current="page">Accueil</a>
           <a  class="p-2" href="/mon-compte">Mon compte</a>
-          <a  class="p-2" href="#">Nouveau Voyage</a>
+          <a  class="p-2" href="/nouveau-voyage">Nouveau Voyage</a>
           <a  class="p-2" href="#">Contact</a>
         {% else %}
           <a  class="p-2 hover:text-[#FF7F3F]" href="/" aria-current="page">Accueil</a>
@@ -20,10 +20,9 @@
         
       <div class="text-xl">
         {% if app.user %}
-          <a  class="p-2 hover:text-[#FF7F3F]" href="#">Mon compte</a>
           <a  class="p-2 hover:text-[#FF7F3F]" href="/logout">Déconnexion</a>
         {% else %}
-          <a  class="p-2 hover:text-[#FF7F3F]" href="/mon-compte">Connexion</a>
+          <a  class="p-2 hover:text-[#FF7F3F]" href="#">Connexion</a>
           <a  class="p-2 hover:text-[#FF7F3F]" href="#">Inscription</a>
         {% endif %}   
       </div>

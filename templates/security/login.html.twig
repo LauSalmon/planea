@@ -1,0 +1,45 @@
+<div class="flex flex-col items-center bg-[#6e7554] lg:w-1/4 rounded mb-5 ml-3">
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}    
+
+    {# {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %} #}
+
+    <div class="flex flex-col">
+        {# l'action du formulaire est lié à ma fonction 'app_login' #}
+        <form method="post" action="{{path('app_login')}}">
+
+            <h1 class="text-2xl text-[#fffefd] text-center">Connectez-vous</h1>
+
+            <div class="flex flex-col text-center text-[#fffefd] p-2">
+                <label for="inputEmail">Saisir votre email :</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="rounded-full p-1 text-[#312c2e] w-96" required autofocus>                
+            </div>
+            <div class="flex flex-col text-center text-[#fffefd] p-2">
+                <label for="inputPassword">Saisir votre mot de passe :</label>
+                <input type="password" name="password" id="inputPassword" class="rounded-full p-1 text-[#312c2e] w-96" required>                
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <div class="checkbox mb-3 text-[#fffefd]">
+                <label>
+                    <input type="checkbox" name="_remember_me" class=""> Remember me
+                </label>
+            </div>
+
+            <div class="flex justify-end m-5">
+                <input type="submit" value="Se connecter" class="bg-[#fffefd] text-[#312c2e] text-xl rounded-full px-8 py-1 hover:bg-[#FF7F3F]"/>                
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
