@@ -22,11 +22,15 @@
                 {# Boucle pour récupérer tous les voyages de la base de données #}
                 {# Loop to show all database trips #}
                 {% for travel in travels %}
-                <div class="lg:w-48 p-5 text-center flex flex-col items-center">
-                    <a href={{ path('app_travel', { id:travel.id } ) }}><img class="lg:size-32 size-48" src="https://www.tourmag.com/photo/art/grande/76939857-55672992.jpg?v=1700834351"/></a>
-                    
-                    <p class="m-2">{{travel.name}}</p>
-                </div>
+                
+                {# Condition pour afficher uniquement les voyages lié à l'utilisateur connecté #}
+                    {% if travel.user.id is same as app.user.id %}
+                        <div class="lg:w-48 p-5 text-center flex flex-col items-center">
+                            <a href={{ path('app_travel', { id:travel.id } ) }}><img class="lg:size-32 size-48" src={{travel.imgTravel}} alt="Photo d'illustration du voyage"/></a>
+                            <p class="m-2">{{travel.name}}</p>
+                        </div>
+                    {% endif %}
+
                 {% endfor %} 
             </div>
 

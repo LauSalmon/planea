@@ -4,6 +4,7 @@ import { PDFViewer } from '@react-pdf/renderer';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
 
+
 // Create styles
 const styles = StyleSheet.create({
   page: {
@@ -36,7 +37,7 @@ const MyDocument = () => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
-        <Text style={styles.title}>Bateau-tour en Grèce</Text>
+        <Text style={styles.title}>Bateau-tour en Grece</Text>
         <Image src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"></Image>
         <Text style={styles.date}>Date de départ : 31/01/2025</Text>
         <Text style={styles.date}>Date de retour : 15/02/2025</Text>
@@ -76,10 +77,10 @@ export function Telecharger(){
     <div className="flex justify-end p-2 mr-5">
       <PDFDownloadLink 
         document={<MyDocument/>}
-        fileName='TestPLANEA.pdf'
-        className="p-2 px-5 text-[#fffefd] bg-[#312c2e] rounded-full"
+        fileName='testPLANEA.pdf'
+        className="p-2 px-5 text-[#312c2e] bg-[#312c2e] border rounded-full"
       >
-        {({loading})=> loading ? 'Loading' : 'Download'}
+        {({loading})=> loading ? 'Loading' : 'Télécharger le pdf'}
       </PDFDownloadLink>
     </div>
   )

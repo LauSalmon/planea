@@ -43,9 +43,19 @@ class TravelController extends AbstractController{
             $travel->setDateStart(new \DateTimeImmutable(UtilsService::cleanInput($form->getData()->getDateStart()->format('d-m-Y'))));
             $travel->setDateEnd(new \DateTimeImmutable(UtilsService::cleanInput($form->getData()->getDateEnd()->format('d-m-Y'))));
 
-            //Lier le voyage à l'utilisateur connecté
-            //Link the new travel to the current user
-            $travel->setUser($utilisateur);
+            //Récupérer les informations de l'utilsiateur connecté
+            $token = $this->container->get('security.token_storage')->getToken();
+
+            //Condition si il y a des données
+            if ($token !== null) {
+                $utilisateur = $token->getUser();
+                //Lier le voyage à l'utilisateur connecté
+                //Link the new travel to the current user
+                $travel->setUser($utilisateur);
+            } else {
+                $msg = "Erreur dans la récupération de l'utilisateur.";
+            }
+
 
             //Condition pour vérifier en bdd si un autre voyage avec le même nom existe
             if(!$travelRepository->findOneBy(['name' => $travel->getName()])){
@@ -89,5 +99,14 @@ class TravelController extends AbstractController{
         ]);
     }
 
+    #[Route('/voyage/{id}/resume',name:'app_travel_resume', methods:'GET')]
+    public function travelResumeById($id) : Response {
+
+        $travel = $this->travelRepository->findOneBy(['id' => $id]);
+
+        return $this->render('travel/travel_resum.html.twig', [
+            'travel'=> $travel,
+        ]);
+    }
     
 }

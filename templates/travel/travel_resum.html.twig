@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{travel.name}}{% endblock %}
+
+{% block body %}
+
+{% include "components/snd_nav.html.twig" %}
+
+    <div id="root" {{ react_component('pdf', {'travelName': travel.name })}}></div>
+{% endblock %}
