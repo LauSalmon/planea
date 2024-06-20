@@ -3,8 +3,7 @@ import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/render
 import { PDFViewer } from '@react-pdf/renderer';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
-
-
+//Faire le style
 // Create styles
 const styles = StyleSheet.create({
   page: {
@@ -32,12 +31,13 @@ const styles = StyleSheet.create({
   }
 });
 
+//Créer le composant Document
 // Create Document Component
 const MyDocument = () => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
-        <Text style={styles.title}>Bateau-tour en Grece</Text>
+        <Text style={styles.title}>Bateau-tour en Gréce</Text>
         <Image src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"></Image>
         <Text style={styles.date}>Date de départ : 31/01/2025</Text>
         <Text style={styles.date}>Date de retour : 15/02/2025</Text>
@@ -60,11 +60,12 @@ const MyDocument = () => (
   </Document>
 );
 
-//Visualiser en direct sur une page
+//Visualiser le pdf
+//View PDF
 export default function Show(){
   return (
     <div className="App" >
-      <PDFViewer width='800px' height='600px'>
+      <PDFViewer width='800px' height='600px' className='p-5'>
         <MyDocument/>
       </PDFViewer>
     </div>
@@ -72,15 +73,16 @@ export default function Show(){
 }
 
 //Telecharger le doc
-export function Telecharger(){
+//Download
+export function Download(){
   return (
-    <div className="flex justify-end p-2 mr-5">
+    <div className="flex justify-end p-2 mr-5 ">
       <PDFDownloadLink 
-        document={<MyDocument/>}
-        fileName='testPLANEA.pdf'
-        className="p-2 px-5 text-[#312c2e] bg-[#312c2e] border rounded-full"
+        document={<MyDocument/>} 
+        fileName='testPLANEA.pdf' 
+        className='p-2 px-5 text-[#312c2e] bg-[#ff7f3f] border rounded-full'
       >
-        {({loading})=> loading ? 'Loading' : 'Télécharger le pdf'}
+        {({loading})=> loading ? 'Chargement...' : 'Télécharger le pdf'}
       </PDFDownloadLink>
     </div>
   )

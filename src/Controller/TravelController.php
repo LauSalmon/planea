@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Utilisateur;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\TravelRepository;
-use App\Repository\UtilisateurRepository;
 use App\Entity\Travel;
 use App\Form\TravelType;
 use App\Service\UtilsService;
@@ -19,7 +17,7 @@ use App\Service\UtilsService;
 class TravelController extends AbstractController{
 
     private TravelRepository $travelRepository;
-    private UtilisateurRepository $utilisateurRepository;
+
     private UserRepository $userRepository;
 
     public function __construct(TravelRepository $travelRepository){
@@ -35,18 +33,22 @@ class TravelController extends AbstractController{
         $form->handleRequest($request);
 
         //Condition si le formulaire est soumis et s'il est valide
+        //Condition if form is submitted and valid
         if($form->isSubmitted() and $form->isValid()){
             //Récupération des valeurs des inout et nettoyages des données
+            //Recovery of input values and data cleansing
             $travel->setName(UtilsService::cleaninput($travel->getName()));
             $travel->setNbPassenger(UtilsService::cleaninput($travel->getNbPassenger()));
             $travel->setCountry(UtilsService::cleaninput($travel->getCountry()));
             $travel->setDateStart(new \DateTimeImmutable(UtilsService::cleanInput($form->getData()->getDateStart()->format('d-m-Y'))));
             $travel->setDateEnd(new \DateTimeImmutable(UtilsService::cleanInput($form->getData()->getDateEnd()->format('d-m-Y'))));
 
-            //Récupérer les informations de l'utilsiateur connecté
+            //Récupérer les informations de l'utilisateur connecté
+            //Recovery informations of connected user
             $token = $this->container->get('security.token_storage')->getToken();
 
             //Condition si il y a des données
+            //Condition if there is data
             if ($token !== null) {
                 $utilisateur = $token->getUser();
                 //Lier le voyage à l'utilisateur connecté
@@ -56,15 +58,15 @@ class TravelController extends AbstractController{
                 $msg = "Erreur dans la récupération de l'utilisateur.";
             }
 
-
             //Condition pour vérifier en bdd si un autre voyage avec le même nom existe
+            //Requirement to check in the database if another trip with the same name exists
             if(!$travelRepository->findOneBy(['name' => $travel->getName()])){
                 $manager->persist($travel);
                 $manager->flush();
 
                 //Redirection vers la page mon-compte
+                //Redirect to my-account page
                 return $this->redirectToRoute('app_compte');
-
 
             } else {
                  $msg = "Un voyage avec le même nom est déjà enregistré.";

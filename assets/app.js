@@ -11,4 +11,4 @@ import './styles/app.tailwind.css'
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
-registerReactControllerComponents();
+registerReactControllerComponents(require.context('../react', true, /\.(j|t)sx?$/));

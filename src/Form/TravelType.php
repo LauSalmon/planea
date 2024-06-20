@@ -27,7 +27,8 @@ class TravelType extends AbstractType
             ])
             ->add('nbPassenger', NumberType::class, [
                 'attr' => [
-                    'class' => 'input rounded-full p-1 mx-5 text-[#312c2e]'
+                    'class' => 'input rounded-full p-1 mx-5 text-[#312c2e]',
+                    'min' => 0
                 ],
                 'label' => "Saisir le nombre de passager :",
                 'label_attr' => ["class" => 'label_input'],
@@ -69,11 +70,7 @@ class TravelType extends AbstractType
                 'label' => "Saisir une url pour illustrer votre voyage :",
                 'label_attr' => ["class" => 'label_input'],
                 'required' => true
-            ])
-            // ->add('utilisateur', EntityType::class, [
-            //     'class' => Utilisateur::class,
-            // ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
